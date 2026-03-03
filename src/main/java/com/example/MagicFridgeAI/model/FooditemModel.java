@@ -1,12 +1,11 @@
 package com.example.MagicFridgeAI.model;
 
 import com.example.MagicFridgeAI.Enum.FooditemEnum;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -15,13 +14,16 @@ import java.time.LocalDateTime;
 
 public class FooditemModel {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private FooditemEnum categoria;
     private int quantidade;
-    private LocalDateTime validade;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate validade;
 
-    public FooditemModel(Long id, String nome, FooditemEnum categoria, int quantidade, LocalDateTime validade) {
+    public FooditemModel(Long id, String nome, FooditemEnum categoria, int quantidade, LocalDate validade) {
         this.id = id;
         this.nome = nome;
         this.categoria = categoria;
@@ -61,11 +63,11 @@ public class FooditemModel {
         this.quantidade = quantidade;
     }
 
-    public LocalDateTime getValidade() {
+    public LocalDate getValidade() {
         return validade;
     }
 
-    public void setValidade(LocalDateTime validade) {
+    public void setValidade(LocalDate validade) {
         this.validade = validade;
     }
 }

@@ -9,7 +9,7 @@ public class MagicFridgeAiApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MagicFridgeAiApplication.class, args);
 
-		System.out.println("oi");
+
 	}
 
 
