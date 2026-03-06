@@ -1,6 +1,5 @@
 package com.example.MagicFridgeAI.controller;
-import com.example.MagicFridgeAI.model.FooditemModel;
-import com.example.MagicFridgeAI.service.ChatgptService;
+import com.example.MagicFridgeAI.service.GeminiService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,15 +8,17 @@ import reactor.core.publisher.Mono;
 @RestController
 public class FoodRecipeController {
 
-    private ChatgptService chatgptService;
+    private GeminiService geminiService;
 
-    public FoodRecipeController(ChatgptService chatgptService) {
-        this.chatgptService = chatgptService;
+    public FoodRecipeController(GeminiService geminiService) {
+        this.geminiService = geminiService;
     }
 
     @GetMapping("/generate")
     public Mono<ResponseEntity<String>> generatRecipe(){
-        return chatgptService.generateRecipe();
+        return geminiService.generateRecipe()
+                .map(recipe -> ResponseEntity.ok(recipe))
+                .defaultIfEmpty(ResponseEntity.noContent().build());
     }
 
 }

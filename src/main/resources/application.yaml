@@ -25,10 +25,6 @@ spring:
     hibernate:
       ddl-auto: update
 
-  gemini:
-    gemini-api-url: ${GEMINI_API_URL}
-    api-key: ${GEMINI_API_KEY}
-
-  chatgpt:
-    chatgpt-api-url: ${OPENAI_API_URL}
-    api-key: ${OPENAI_API_KEY}
+gemini:
+  chatgpt-api-url: ${GEMINI_API_URL}
+  api-key: ${GEMINI_API_KEY}
