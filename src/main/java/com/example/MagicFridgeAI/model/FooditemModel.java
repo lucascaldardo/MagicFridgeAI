@@ -18,6 +18,7 @@ public class FooditemModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    @Enumerated(EnumType.STRING)
     private FooditemEnum categoria;
     private int quantidade;
     @JsonFormat(pattern = "yyyy-MM-dd")
