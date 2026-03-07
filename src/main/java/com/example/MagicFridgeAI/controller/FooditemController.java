@@ -30,7 +30,7 @@ public class FooditemController {
     //Get
     @GetMapping("/listar")
     public ResponseEntity<List<FooditemModel>>listar(){
-        List<FooditemModel> listados = fooditemService.listar();
+        List<FooditemModel> listados = fooditemService.listarTodos();
         return ResponseEntity.ok(listados);
     }
 

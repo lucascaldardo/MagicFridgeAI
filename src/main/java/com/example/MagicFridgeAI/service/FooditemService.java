@@ -21,7 +21,7 @@ public class FooditemService {
         return fooditemRepository.save(foodItem);
     }
 
-    public List<FooditemModel> listar(){
+    public List<FooditemModel> listarTodos(){
         return fooditemRepository.findAll();
     }
 
